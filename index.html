@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Random Question Generator</title>
+	<style>
+
+		body {
+			font-family: Arial, sans-serif;
+			text-align: center;
+            height: fit-content;
+		}
+
+        header {
+            padding:10px;
+        }
+
+		h1 {
+			margin-top: 20px;
+            padding: 20px;
+		}
+		p {
+			margin-top: 20px;
+			margin-bottom: 10px;
+			font-size: 18px;
+		}
+		button {
+			font-size: 18px;
+            font-weight: 600;
+			padding: 20px;
+			border-radius: 10px;
+			background-color: #65bc45;
+			color: #fff;
+			border: none;
+			cursor: pointer;
+		}
+		#question {
+			margin-top: 20px;
+            padding: 20px;
+			font-size: 24px;
+            font-style: italic;
+		}
+
+	</style>
+	<script>
+		function generateQuestion() {
+			var questions = [
+            "If you could dine alone with anyone from any historical period, which person would it be?",
+            "If you could change one thing in the world right now, what would you alter?",
+            "If you could suddenly possess an extraordinary talent in one of the arts, what would you like it to be?",
+            "If you could have had the starring role in one film already made, which movie would you pick?",
+            "If you were stranded forever on a desert island and could have only one book to read, which would you want?",
+            "If you had to lose one of your five senses, which would you give up?",
+            "If you could have personally witnessed one event in history, what would you want to have seen?",
+            "If you could instantly play one musical instrument perfectly that you have never played before, what would it be and why?",
+            "If you could be guaranteed one thing in life besides money, what would you ask for?",
+            "If you had to choose the single most valuable thing you ever learned, what would it be?",
+            "If you could easily visit one known planet, which one would you go to?",
+            "If you could have been the author of any book already written, which book would you want to have penned?",
+            "If you could “uninvent” one thing in the world so that it would no longer exist, what would you choose?",
+            "If you could have only one piece of furniture in your house, what would you want it to be?",
+            "If you could invent anything that currently does not exist, what would it be?",
+            "If you could eat one food in any quantity for the rest of your life with no ill effects whatsoever, what food would you choose?",
+            "If you were to initiate a new charity, what would be its mission, and who would it benefit?",
+            "If you could have any music group alive today play at your birthday, which group would you hire?",
+            "If you won the lottery, what would be the first thing you would do?",
+            "If you were to be a machine, what machine would you be?",
+            "If you had to name your single worst fear, what would it be?",
+            "If you could eliminate forevermore one cause of death on earth, what would it be?",
+            "If you had to eat in only one restaurant for the rest of your life, which would you choose?",
+            "If you had to rename each person you are with right now, what would you call each of them?"
+			];
+			var randomIndex = Math.floor(Math.random() * questions.length);
+			document.getElementById("question").innerHTML = questions[randomIndex];
+		}
+	</script>
+</head>
+<body>
+<header>
+    <img align="center" src="GI-logo.png" alt="Logo" class="logo" width="100px">
+</header>
+	<h1>Question Generator</h1>
+	<button onclick="generateQuestion()">Generate Question</button>
+	<p id="question"></p>
+    <img src="Qbox.png" width="60px"> 
+</body>
+</html>
