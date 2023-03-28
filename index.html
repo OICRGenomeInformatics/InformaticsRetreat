@@ -34,6 +34,11 @@
 			border: none;
 			cursor: pointer;
 		}
+		button:disabled {
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+}
 		#question {
 			margin-top: 20px;
             padding: 20px;
@@ -42,10 +47,27 @@
 		}
 
 	</style>
-	<script>
-		function generateQuestion() {
-			var questions = [
-            "If you could dine alone with anyone from any historical period, which person would it be?",
+<script>
+	function startTimer() {
+	  // Disable the button
+	  document.getElementById("generate-question").disabled = true;
+  
+	  // Set the timer for 1 minute
+	  var timeleft = 45;
+	  var countdown = setInterval(function(){
+		document.getElementById("timer").innerHTML = "Time left: " + timeleft + " seconds";
+		timeleft -= 1;
+		if (timeleft <= 0){
+		  clearInterval(countdown);
+		  document.getElementById("timer").innerHTML = "Time's up!";
+		  // Enable the button
+		  document.getElementById("generate-question").disabled = false;
+		}
+	  }, 1000);
+	  
+	  // Generate a random question
+	  var questions = [
+	  "If you could dine alone with anyone from any historical period, which person would it be?",
             "If you could change one thing in the world right now, what would you alter?",
             "If you could suddenly possess an extraordinary talent in one of the arts, what would you like it to be?",
             "If you could have had the starring role in one film already made, which movie would you pick?",
@@ -66,22 +88,25 @@
             "If you won the lottery, what would be the first thing you would do?",
             "If you were to be a machine, what machine would you be?",
             "If you had to name your single worst fear, what would it be?",
-            "If you could eliminate forevermore one cause of death on earth, what would it be?",
             "If you had to eat in only one restaurant for the rest of your life, which would you choose?",
             "If you had to rename each person you are with right now, what would you call each of them?"
-			];
-			var randomIndex = Math.floor(Math.random() * questions.length);
-			document.getElementById("question").innerHTML = questions[randomIndex];
-		}
-	</script>
+
+	  ];
+	  var randomIndex = Math.floor(Math.random() * questions.length);
+	  document.getElementById("question").innerHTML = questions[randomIndex];
+	}
+  </script>
 </head>
 <body>
 <header>
     <img align="center" src="GI-logo.png" alt="Logo" class="logo" width="100px">
 </header>
-	<h1>Question Generator</h1>
-	<button onclick="generateQuestion()">Generate Question</button>
-	<p id="question"></p>
-    <img src="Qbox.png" width="60px"> 
+	<h2>Go around in turns and Introduce yourselves</h2>
+	<h3>1. What do you do at OICR?</h3>
+	<h3>2. Why do you do what you do?</h3>
+	<h3>3. Following your answers above press the button below</h3>
+	<button id="generate-question" onclick="startTimer()">Click Here When ready</button>	<p id="question"></p>
+    <img src="Qbox.png" width="60px">
+		<h3><span id="timer"></span></h3>
 </body>
 </html>
