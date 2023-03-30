@@ -35,10 +35,10 @@
 			cursor: pointer;
 		}
 		button:disabled {
-    background-color: #ccc;
-    color: #666;
-    cursor: not-allowed;
-}
+			background-color: #ccc;
+			color: #666;
+			cursor: not-allowed;
+		}
 		#question {
 			margin-top: 20px;
             padding: 20px;
@@ -48,38 +48,27 @@
 
 	</style>
 <script>
-	function startTimer() {
-	  // Disable the button
-	  document.getElementById("generate-question").disabled = true;
-  
-	  // Set the timer for 1 minute
-	  var timeleft = 45;
-	  var countdown = setInterval(function(){
-		document.getElementById("timer").innerHTML = "Time left: " + timeleft + " seconds";
-		timeleft -= 1;
-		if (timeleft <= 0){
-		  clearInterval(countdown);
-		  document.getElementById("timer").innerHTML = "Time's up!";
-		  // Enable the button
-		  document.getElementById("generate-question").disabled = false;
+	var clicks = 0;
+	
+	function handleClick() {
+		clicks++;
+		if (clicks >= 5) {
+			document.getElementById("generate-question").disabled = true;
 		}
-	  }, 1000);
-	  
-	  // Generate a random question
-	  var questions = [
+		
+		// Generate a random question
+		var questions = [
 	  "If you could dine alone with anyone from any historical period, which person would it be?",
             "If you could change one thing in the world right now, what would you alter?",
             "If you could suddenly possess an extraordinary talent in one of the arts, what would you like it to be?",
             "If you could have had the starring role in one film already made, which movie would you pick?",
             "If you were stranded forever on a desert island and could have only one book to read, which would you want?",
             "If you had to lose one of your five senses, which would you give up?",
-            "If you could have personally witnessed one event in history, what would you want to have seen?",
             "If you could instantly play one musical instrument perfectly that you have never played before, what would it be and why?",
             "If you could be guaranteed one thing in life besides money, what would you ask for?",
             "If you had to choose the single most valuable thing you ever learned, what would it be?",
             "If you could easily visit one known planet, which one would you go to?",
             "If you could have been the author of any book already written, which book would you want to have penned?",
-            "If you could “uninvent” one thing in the world so that it would no longer exist, what would you choose?",
             "If you could have only one piece of furniture in your house, what would you want it to be?",
             "If you could invent anything that currently does not exist, what would it be?",
             "If you could eat one food in any quantity for the rest of your life with no ill effects whatsoever, what food would you choose?",
@@ -88,12 +77,10 @@
             "If you won the lottery, what would be the first thing you would do?",
             "If you were to be a machine, what machine would you be?",
             "If you had to name your single worst fear, what would it be?",
-            "If you had to eat in only one restaurant for the rest of your life, which would you choose?",
-            "If you had to rename each person you are with right now, what would you call each of them?"
-
+            "If you had to eat in only one restaurant for the rest of your life, which would you choose?"
 	  ];
-	  var randomIndex = Math.floor(Math.random() * questions.length);
-	  document.getElementById("question").innerHTML = questions[randomIndex];
+		var randomIndex = Math.floor(Math.random() * questions.length);
+		document.getElementById("question").innerHTML = questions[randomIndex];
 	}
   </script>
 </head>
@@ -101,12 +88,12 @@
 <header>
     <img align="center" src="GI-logo.png" alt="Logo" class="logo" width="100px">
 </header>
-	<h2>Go around in turns and Introduce yourselves</h2>
+	<h4>This will be your table group for all the collaborative activities of the day. Take some time to introduce yourselves.</h4>
+	<h2>In turns, introduce yourselves and answer the following:</h2>
 	<h3>1. What do you do at OICR?</h3>
 	<h3>2. Why do you do what you do?</h3>
-	<h3>3. Following your answers above press the button below</h3>
-	<button id="generate-question" onclick="startTimer()">Click Here When ready</button>	<p id="question"></p>
+	<h3>3. Answer one of the random questions below</h3>
+	<button id="generate-question" onclick="handleClick()">Click Here</button>	<p id="question"></p>
     <img src="Qbox.png" width="60px">
-		<h3><span id="timer"></span></h3>
 </body>
 </html>
